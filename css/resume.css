@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+
+header + * { margin-top: 80px!important; }
+
+.resume {
+    margin: 0 auto;
+    padding: 50px 0;
+    max-width: 1140px;
+    min-height: 100px;
+}
+
+.resume__container {
+    min-width: 1140px;
+    padding: 0 1em;
+}
+
+.resume__title {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 2em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.resume__table {
+    margin-top: 1em;
+    width: 100%;
+    border: 2px solid #333;
+    border-spacing: 10px 10px;
+    border-collapse: collapse;
+}
+
+.resume__table td { padding: 0.5em 1em; border: 1px solid #333; }
+
+/* 테이블 이미지 */
+.resume__table td.resume__image {
+    width: 200px;
+    height: 250px;
+    background-color: #eee;
+    object-fit: cover;
+    text-align: center;
+    position: relative;
+}
+.resume__table td.resume__image button {
+    margin-bottom: 0;
+    background-color: #2a9dd3;
+    color: #fff;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    border-radius: 0.25em;
+    border: none;
+}
+.resume__table td.resume__image img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.resume__table td.resume__image label {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+}
+/* /테이블 이미지 */
+
+/**
+    테이블 라벨
+    # 양쪽 정렬 사용하기 
+
+    ``text-align: justify`` 를 사용한 후 
+    ::before, ::after 에 각각 다음과 깉이 스타일을 주면 양쪽 정렬을 만들 수 있다.
+    ``
+    width: 100%;
+    display: inline-block;
+    ``
+**/
+.resume__table td.resume__label {
+    background-color: #a5dcec;
+    width: 8em;
+    line-height: 10px;
+    height: 40px;
+    font-weight: bold;
+    text-align: justify;
+}
+.resume__table td.resume__label::before,
+.resume__table td.resume__label::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+/* /테이블 라벨 */
+
+/* 테이블 입력 */
+.resume__table .resume__input input,
+.resume__table .resume__input select {
+    width: 100%;
+    min-width: 120px;
+    border: none;
+    outline: none;
+}
+.resume__table .resume__duration { text-align: center; }
+.resume__table .resume__duration input { border: none; }
+
+.resume__table .resume__head {
+    text-align: center;
+    background-color: #dbedf1;
+}
+
+/* /테이블 입력 */
+
+
+/* 테이블 삭제 */
+.resume__table .resume__remove { text-align: center; width: 5em; }
+.resume__table .btn-remove {
+    border: none;
+    width: 5em;
+    padding: 0.3em 0;
+    font-size: 0.9em;
+    border-radius: 0.25em;
+    background-color: #f14242;
+    color: #fff;
+}
+/* /테이블 삭제 */
+
+/* 테이블 추가 */
+.resume__table .resume__add { text-align: center; padding: 0.5em 0; }
+.resume__table .btn-add {
+    font-size: 0.9em;
+    padding: 0.5em 1.5em;
+    border: none;
+    background-color: #2a9dd3;
+    color: #fff;
+    border-radius: 0.25em;
+}
+/* /테이블 추가 */

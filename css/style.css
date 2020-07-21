@@ -1,0 +1,292 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "맑은 고딕", sans-serif;
+}
+label, button, a { cursor: pointer; user-select: none; }
+a, a:hover { text-decoration: none; color: inherit; }
+
+
+.bg-gray { background-color: #f7f7f7; }
+.position-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.main-color { color: #4091a0; }
+.padding { padding-top: 6em; padding-bottom: 6em; }
+
+/* 테이블 */
+.t__head, .t__row { display: flex; align-items: center; text-align: center; }
+.t__head { height: 50px; border-bottom: 1px solid #ddd; font-size: 0.9em; color: #555; }
+.t__row { min-height: 100px; padding: 1em 0; }
+.t__row:not(:first-child) { border-top: 1px solid #ddd; }
+
+.cell-50 { width: 50%; }
+.cell-40 { width: 40%; }
+.cell-30 { width: 30%; }
+.cell-25 { width: 25%; }
+.cell-20 { width: 20%; }
+.cell-15 { width: 15%; }
+.cell-10 { width: 10%; }
+/* /테이블 */
+
+/* 리스트 */
+
+.title { font-size: 1.8em; font-weight: 600; color: #333; }
+.sub-title { font-size: 1.5em; font-weight: 600; color: #333; }
+
+.list-group {
+    counter-set: list;
+    display: flex; flex-direction: column;
+}
+.list-item {
+    counter-increment: list;
+    padding: 0.8em 0.5em;
+    line-height: 1.5em;
+    font-size: 1.3em;
+}
+.list-item::before {
+    content: counter(list) ".";
+    font-size: 1.5em;
+    margin-right: 0.5em;
+    font-weight: 600;
+}
+
+/* /리스트 */
+
+
+/* 이미지 라인 */
+.image-line {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+.image-line::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: #0008;
+}
+.image-line img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* /이미지 라인 */
+
+/* 헤더 영역 */
+#top {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    z-index: 1000;
+}
+
+#top .s-icon { color:#aaa; padding: 0.3em; }
+#top .s-icon:hover { color: #fff; }
+
+#top .auth a {
+    padding: 0 0.5em;
+    font-size: 0.9em;
+    color: #ddd;
+}
+
+header {
+    left: 0; top: 0;
+    position: fixed;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    height: 80px;
+    margin-top: 40px;
+    z-index: 1000;
+}
+header + * { margin-top: 80px; }
+
+header .logo {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+}
+
+
+header .nav { display: flex; height: 100%; }
+
+header .nav-item {
+    padding: 0 1.2em;
+    height: 80px;
+    line-height: 80px;
+    position: relative;
+}
+
+header .nav-item::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 1.5em;
+    width: 0;
+    height: 1px;
+    background-color: #555;
+    opacity: 0;
+    transition: 0.4s;
+    transform: translateX(-50%);
+}
+header .nav-item:hover::after { width: calc(100% - 2.4em); opacity: 1; }
+
+header .nav-item > a { color: #888; }
+header .nav-item:hover > a { color: #333; }
+
+
+header .nav-item .sub-list {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 150px;
+    padding-top: 10px;
+    transform: translateX(-50%) translateY(-30px);
+    opacity: 0;
+    transition: 0.4s;
+    pointer-events: none;
+}
+
+header .nav-item:hover .sub-list {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+header .nav-item .sub-list a {
+    display: block;
+    height: 3em;
+    line-height: 3em;
+    font-size: 0.95em;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+header .nav-item .sub-list a:not(:first-child) { border-top: 1px solid #eee; }
+header .nav-item .sub-list a:hover { background-color: #eee; }
+
+
+/* /헤더 영역 */
+
+
+/* 비주얼 영역 */
+#visual {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+#visual .images > img {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    animation: slide 9s infinite;
+}
+
+#visual .images > img:nth-child(1) { animation-delay: -3s; }
+#visual .images > img:nth-child(3) { animation-delay: -6s; }
+
+#visual .images::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: #000a;
+}
+
+@keyframes slide {
+    0%      { left: -100%; }
+    27.777% { left: -100%; }
+
+    33.333% { left: -0%; }
+    61.111% { left: -0%; }
+
+    66.666% { left: 100%; }
+    100%    { left: 100%; }
+}
+
+#visual .center {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+#visual .center p {
+    color: #eee;
+    text-shadow: 0 3px 5px #0008;
+}
+
+#visual .center h1 {
+    font-size: 2.8em;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 3px 5px #0008;
+}
+
+#visual .center a {
+    display: inline-block;
+    margin-top: 2em;
+    border: 1px solid #fff;
+    padding: 0.7em 1.5em;
+    background-color: transparent;
+    color: #fff;
+    font-size: 0.9em;
+    transition: 0.4s;
+}
+
+#visual .center a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* /비주얼 영역 */
+
+/* 푸터 영역 */
+footer { background-color: #333; }
+footer .logo {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #aaa;
+    transition: color 0.4s;
+}
+footer .logo:hover { color: #fff; }
+footer .social a { color: #aaa; transition: color 0.4s; }
+footer .social a:hover { color: #fff; }
+
+footer .copy-right {
+    color: #aaa;
+    font-size: 0.9em;
+    line-height: 2em;
+}
+footer .copy-right p {
+    margin-bottom: 0;
+}
+
+footer .map {
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+}
+
+footer .map img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+footer .map img:hover {
+    transform: scale(2);
+}
+
+/* /푸터 영역 */
