@@ -1,42 +1,42 @@
 function Resome(){
     this.rows = {
-        education: `<td class="resume__input"><input type="text"></td>
-                    <td class="resume__input">
-                        <select name="type" id="edu_Type">
-                            <option value="재학">재학</option>
-                            <option value="졸업">졸업</option>
-                        </select>
-                    </td>
-                    <td class="resume__input"><input type="text"></td>
-                    <td class="resume__input"><input type="text"></td>
-                    <td class="resume__input"><input type="text"></td>
-                    <td class="resume__remove">
-                        <button class="btn-remove">삭제 <i class="fa fa-times"></i></button>
-                    </td>`,
-        career: `<td class="resume__input"><input type="text"></td>
-                <td class="resume__input"><input type="text"></td>
-                <td class="resume__input"><input type="text"></td>
-                <td class="resume__remove">
-                    <button class="btn-remove">삭제 <i class="fa fa-times"></i></button>
-                </td>`,
-        outside: `<td class="resume__input"><input type="text"></td>
-                <td class="resume__input"><input type="text"></td>
-                <td class="resume__input"><input type="text"></td>
-                <td class="resume__remove">
-                    <button class="btn-remove">삭제 <i class="fa fa-times"></i></button>
-                </td>`,
-        license: `<td class="resume__input"><input type="text"></td>
-                <td class="resume__input"><input type="text"></td>
-                <td class="resume__input">
-                    <select name="type" id="lic_type">
-                        <option value="자격증">자격증</option>
-                        <option value="어학">어학</option>
-                    </select>
-                </td>
-                <td class="resume__input"><input type="text"></td>
-                <td class="resume__remove">
-                    <button class="btn-remove">삭제 <i class="fa fa-times"></i></button>
-                </td>`
+        education: '<td class="resume__input"><input type="text"></td>'
+                    +'<td class="resume__input">'
+                        +'<select name="type" id="edu_Type">'
+                            +'<option value="재학">재학</option>'
+                            +'<option value="졸업">졸업</option>'
+                        +'</select>'
+                    +'</td>'
+                    +'<td class="resume__input"><input type="text"></td>'
+                    +'<td class="resume__input"><input type="text"></td>'
+                    +'<td class="resume__input"><input type="text"></td>'
+                    +'<td class="resume__remove">'
+                        +'<button class="btn-remove">삭제 <i class="fa fa-times"></i></button>'
+                    +'</td>',
+        career: '<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__remove">'
+                    +'<button class="btn-remove">삭제 <i class="fa fa-times"></i></button>'
+                +'</td>',
+        outside: '<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__remove">'
+                    +'<button class="btn-remove">삭제 <i class="fa fa-times"></i></button>'
+                +'</td>',
+        license: '<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__input">'
+                    +'<select name="type" id="lic_type">'
+                        +'<option value="자격증">자격증</option>'
+                        +'<option value="어학">어학</option>'
+                    +'</select>'
+                +'</td>'
+                +'<td class="resume__input"><input type="text"></td>'
+                +'<td class="resume__remove">'
+                    +'<button class="btn-remove">삭제 <i class="fa fa-times"></i></button>'
+                +'</td>'
     };
 
     this.setEvents();    
@@ -63,9 +63,10 @@ Resome.prototype.setEvents = function(){
 
     // 추가하기 BUTTON
     var btns__add = document.querySelectorAll(".btn-add");
-    btns__add.forEach(btn => {
+    for(var i = 0; i < btns__add.length; i++){
+        var btn = btns__add[i];
         btn.addEventListener("click", function(){
-            var table = closest(btn, ".resume__table");
+            var table = closest(this, ".resume__table");
             var infoName = table.dataset.info;
             
             var tbody = table.firstElementChild;
@@ -79,11 +80,13 @@ Resome.prototype.setEvents = function(){
         
             autoSize.rowSpan = length + 1;
         });
-    });
+    }
+    
 
     // 삭제하기 BUTTON
     var tables = document.querySelectorAll(".resume__table");
-    tables.forEach(table => {
+    for(var i = 0; i < tables.length; i++){
+        var table = tables[i];
         table.addEventListener("click", function(e){
             var isBtn = e.target.classList.contains("btn-remove") || closest(e.target, ".btn-remove");
             if(!isBtn) return;
@@ -93,11 +96,12 @@ Resome.prototype.setEvents = function(){
             var autoSize = table.querySelector(".resume__autosize");
 
             var row = closest(e.target, ".resume__table tr");
+            console.log(row);
             row.remove();
 
             autoSize.rowSpan = length - 1;
         });
-    });
+    }
 };
 
 /**
